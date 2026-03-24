@@ -1,0 +1,14 @@
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\bin\Debug\net9.0\Codewars2.exe
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\bin\Debug\net9.0\Codewars2.deps.json
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\bin\Debug\net9.0\Codewars2.runtimeconfig.json
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\bin\Debug\net9.0\Codewars2.dll
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\bin\Debug\net9.0\Codewars2.pdb
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.AssemblyInfoInputs.cache
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.AssemblyInfo.cs
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.csproj.CoreCompileInputs.cache
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.dll
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\refint\Codewars2.dll
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.pdb
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.genruntimeconfig.cache
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\ref\Codewars2.dll
