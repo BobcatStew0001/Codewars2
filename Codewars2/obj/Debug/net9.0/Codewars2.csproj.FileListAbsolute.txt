@@ -12,3 +12,4 @@ C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9
 C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.pdb
 C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.genruntimeconfig.cache
 C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\ref\Codewars2.dll
+C:\Users\brown\OneDrive\Documents\ReposCSharp\Codewars2\Codewars2\obj\Debug\net9.0\Codewars2.sourcelink.json
