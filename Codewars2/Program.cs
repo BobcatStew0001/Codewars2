@@ -4,6 +4,47 @@ namespace Codewars2;
 
 class Program
 {
+   //Count the Smiley Faces 
+   
+    public static int CountSmileys(string[] smileys)
+    {
+        return smileys.Count(s => s switch //switch case to account for all versions of the smileys
+        {
+            ":)" or ":D" or ";D" or ";)" => true,//This matches the two character smileys
+            ":-)" or ":-D" or ":~)" or ":~D" or ";-)" or ";-D" or ";~)" or ";~D" => true,//This is 3 smileys
+            _ => false //default to false for all others
+        });
+        
+
+    }
+    
+    //Count the Smileys Faces: Saving this approach because this was what I originally tried unsuccessfully
+    public static int CountSmiley(string[] smileys)//Dropped the s on the method name to prevent overload
+    {
+        int c = 0;
+        List<string> smileysList = smileys.ToList<string>();
+        List<char> eyes = new List<char> { ':', ';' };
+        List<char> nose = new List<char> { '-', '~'};//I forgot to account for the nose
+        List<char> mouth = new List<char> { ')', 'D' };
+
+        foreach(string str in smileys)
+        {
+            if(str.Length==2 || str.Length == 3)
+            {//Was not aware of the .Exists() 
+                if (eyes.Exists(symbol => symbol.Equals(str.First<char>())))
+                {
+                    if (mouth.Exists((symbol => symbol.Equals(str.Last<char>()))))
+                    {
+                        if(nose.Exists(symbol=> symbol.Equals(str.ElementAt<char>(1))))
+                            c++;
+
+                        else if (str.Length == 2)
+                            c++;
+                    } 
+                }
+            }  
+    
+    
     //Sum Mixed Array
     public static int SumMix(object[] x)
     {
