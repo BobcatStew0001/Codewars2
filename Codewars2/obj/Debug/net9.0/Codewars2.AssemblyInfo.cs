@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Codewars2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e986e438645cd0ff3f1f5044ebcadab4dc16e946")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69e3a6cbc5173e67ca3f29a4e75443715af677e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Codewars2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Codewars2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

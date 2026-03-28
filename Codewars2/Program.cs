@@ -1,10 +1,67 @@
 ﻿using System.Text.RegularExpressions;
-using System.Linq; 
+using System.Linq;
+using System.Runtime.ExceptionServices;
+using System.Collections.Generic;
+
 namespace Codewars2;
 
-class Program
-{
-   //Count the Smiley Faces 
+class Program 
+{//The Feast of Many Beast 
+    public static bool Beast(string beast, string dish)
+    { 
+        return char.ToLower(beast[0]) == char.ToLower(dish[0]) && char.ToLower(beast[^1]) == char.ToLower(dish[^1]);
+    }
+//Two Sum : Take the sum of two int in the numbers array and return a value equal to the target 
+    public static int[] TwoSums(int[] numbers, int target)
+    {
+        for (int i = 0; i < numbers.Length; i++)//1st int in the array 
+        {
+            for (int j = i + 1; j < numbers.Length; j++)//2nd int in the array
+            {
+                if (numbers[i] + numbers[j] == target)//Sum of two ints that equal the target 
+                    return new int[] { i, j }; //return the two ints 
+            }
+        }
+
+        return new int[] { }; //no solution found 
+    }
+    
+    
+    
+    // 5 without numbers: Can't use these 0123456789*+-/
+    public static int UnusualFive()
+    {
+        return "five!".Length;//This works because it has a length of 5 and contains no restricted characters
+    } 
+
+    //Find the stray number
+    public static int differentArray(int[] numbers)
+    {
+        return numbers.GroupBy(x => x).First(x => x.Count() == 1).Key; 
+    }
+    //Fix String Case 
+    public static string Solve(string s)
+    {
+        int upper = s.Count(char.IsUpper);
+        int lower = s.Count(char.IsLower);
+        return upper > lower ? s.ToUpper() : s.ToLower();
+    }
+    
+    
+    //Triple Trouble 
+    public static string TripleTrouble(string one, string two, string three)
+    {
+        string result = " "; //Variable created outside the for loop to concat the results ;
+        for (int i = 0; i < one.Length; i++)//could use two.Length or three.Length no difference 
+        {
+            result += one[i];
+            result += two[i];
+            result += three[i];
+        }
+        return result;
+    }
+
+    //Count the Smiley Faces 
    
     public static int CountSmileys(string[] smileys)
     {
@@ -43,6 +100,9 @@ class Program
                     } 
                 }
             }  
+        }
+        return c;
+    }
     
     
     //Sum Mixed Array
@@ -89,7 +149,11 @@ class Program
     
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        //Beast Method Test
+        Console.WriteLine($"Beast('great blue heron', 'garlic naan') -> {Beast("great blue heron", "garlic naan")} (Expected: True)");
+        Console.WriteLine($"Beast('chickadee', 'chocolate cake') -> {Beast("chickadee", "chocolate cake")} (Expected: True)");
+        Console.WriteLine($"Beast('brown bear', 'bear claw') -> {Beast("brown bear", "bear claw")} (Expected: False)");
+        Console.WriteLine("--------------------------");
         
         //BreakCamelCase Method Test
         Console.WriteLine($"'camelCase' -> '{BreakCamelCase("camelCase")}'");
@@ -121,5 +185,11 @@ class Program
         Console.WriteLine($"SumMix [9, 3, \"7\", \"3\"] -> {SumMix(new object[] { 9, 3, "7", "3" })} (Expected: 22)");
         Console.WriteLine($"SumMix [\"5\", \"0\", 9, 3, 2, 1, \"9\", 6, 7] -> {SumMix(new object[] { "5", "0", 9, 3, 2, 1, "9", 6, 7 })} (Expected: 42)");
         Console.WriteLine($"SumMix [\"3\", 6, 6, 0, \"5\", 8, 5, \"6\", 2, \"0\"] -> {SumMix(new object[] { "3", 6, 6, 0, "5", 8, 5, "6", 2, "0" })} (Expected: 41)");
+        Console.WriteLine("--------------------------");
+        
+        //TripleTrouble Method Test
+        Console.WriteLine($"TripleTrouble(\"aa\", \"bb\", \"cc\") -> \"{TripleTrouble("aa", "bb", "cc")}\" (Expected: \"abcabc\")");
+        Console.WriteLine($"TripleTrouble(\"Bm\", \"aa\", \"tn\") -> \"{TripleTrouble("Bm", "aa", "tn")}\" (Expected: \"Batman\")");
+        Console.WriteLine($"TripleTrouble(\"LLh\", \"euo\", \"edr\") -> \"{TripleTrouble("LLh", "euo", "edr")}\" (Expected: \"Leouheder\")");
     }
 }
