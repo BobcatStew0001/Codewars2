@@ -10,6 +10,33 @@ namespace Codewars2;
 
 class Program
 {
+    public static bool Scramble(string str1, string str2)
+    {
+        if (str1.Length < str2.Length)
+        {
+            return false;
+        }
+
+        int[] compareString = new int[26];
+
+        for (int i = 0; i < str1.Length; i++)
+        {
+            compareString[str1[i] - 'a']++;
+        }
+
+        foreach (char c in str2)
+        {
+                compareString[c - 'a']--;
+        }
+
+        if (compareString.Any(x => x < 0))
+        {
+                return false;
+        }
+
+        return true; 
+    } 
+    
     //Categorize New Member
     public static IEnumerable<string> OpenOrSenior(int[][] data)
     {
@@ -321,6 +348,17 @@ class Program
         Console.WriteLine(
             $"TripleTrouble(\"LLh\", \"euo\", \"edr\") -> \"{TripleTrouble("LLh", "euo", "edr")}\" (Expected: \"Leouheder\")");
 
+        //ToRoman Method Test
+        Console.WriteLine($"ToRoman(1990) -> {ToRoman(1990)} (Expected: MCMXC)");
+        Console.WriteLine($"ToRoman(2008) -> {ToRoman(2008)} (Expected: MMVIII)");
+        Console.WriteLine($"ToRoman(1666) -> {ToRoman(1666)} (Expected: MDCLXVI)");
+        Console.WriteLine("--------------------------");
+
+        //FromRoman Method Test
+        Console.WriteLine($"FromRoman(\"MCMXC\") -> {FromRoman("MCMXC")} (Expected: 1990)");
+        Console.WriteLine($"FromRoman(\"MMVIII\") -> {FromRoman("MMVIII")} (Expected: 2008)");
+        Console.WriteLine($"FromRoman(\"MDCLXVI\") -> {FromRoman("MDCLXVI")} (Expected: 1666)");
+        Console.WriteLine("--------------------------");
         
     }
 }
