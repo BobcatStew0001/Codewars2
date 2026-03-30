@@ -10,6 +10,68 @@ namespace Codewars2;
 
 class Program
 {
+    //Categorize New Member
+    public static IEnumerable<string> OpenOrSenior(int[][] data)
+    {
+        var results = new List<string>();
+        foreach (var a in data)
+        {
+            if (a[0] >= 55 && a[1] > 7)
+            {
+                results.Add("Senior"); 
+            }
+            else
+            {
+                results.Add("Open"); 
+            }
+                
+        }
+        return results;
+    }
+    //Banker's Plan
+    public static Boolean Fortune(int f0, double p, int c0, int n, double i)
+    {
+        var currentFortune = f0;
+        var currentWithdrawal = c0;
+        
+        for (int year = 1; year < n; year++)
+        {
+            currentFortune = currentFortune + (int)(currentFortune * p / 100) - currentWithdrawal;
+            currentWithdrawal = currentWithdrawal + (int)((int)currentWithdrawal * i / 100);
+            if (currentFortune < 0)
+            {
+               return false;
+            }
+            
+        }
+
+        return true; 
+    }
+    
+    //Word Values
+    //LINQ Solution:  return a.Select((x, i) => x.Sum(c => c != 32 ? c - 96 : 0) * ++i).ToArray(); 
+    public static int[] WordValues(string[] a)
+    {
+        var results = new int[a.Length];
+        
+        for(int i = 0; i < a.Length; i++)
+        { 
+            var currentSum = 0; 
+            var word = a[i];
+            foreach (char c in word)
+            {
+                if (c != ' ')
+                {
+                    currentSum += c - 'a' + 1; 
+                }
+
+                
+            }
+            results[i] = currentSum * (i + 1);
+        }
+
+        return results; 
+    } 
     //Max Length Difference 
     public static int MaxDifLen(string[] a1, string[] a2)
     {
@@ -258,6 +320,8 @@ class Program
             $"TripleTrouble(\"Bm\", \"aa\", \"tn\") -> \"{TripleTrouble("Bm", "aa", "tn")}\" (Expected: \"Batman\")");
         Console.WriteLine(
             $"TripleTrouble(\"LLh\", \"euo\", \"edr\") -> \"{TripleTrouble("LLh", "euo", "edr")}\" (Expected: \"Leouheder\")");
+
+        
     }
 }
 
