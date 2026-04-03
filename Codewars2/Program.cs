@@ -10,6 +10,47 @@ namespace Codewars2;
 
 class Program
 {
+    private static Dictionary<string, string> Greeting =
+        new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "english", "Welcome" },
+            { "czech", "Vitejte" },
+            { "danish", "Velkomst" },
+            { "dutch", "Welkom" },
+            { "estonian", "Tere tulemast" },
+            { "finnish", "Tervetuloa" },
+            { "flemish", "Welgekomen" },
+            { "french", "Bienvenue" },
+            { "german", "Willkommen" },
+            { "irish", "Failte" },
+            { "italian", "Benvenuto" },
+            { "latvian", "Gaidits" },
+            { "lithuanian", "Laukiamas" },
+            { "polish", "Witamy" },
+            { "spanish", "Bienvenido" },
+            { "swedish", "Valkommen" },
+            { "welsh", "Croeso" }
+        };
+    //Welcome 
+    public static string Greet(string language)
+    {
+        if (String.IsNullOrEmpty(language))
+        {
+            return "Welcome"; 
+        }
+        
+        if (Greeting.TryGetValue(language, out string result))
+        {
+            return result;
+        }
+        else
+        {
+            return "Welcome";
+        }
+    }
+    
+    
+    //Scrambled String
     public static bool Scramble(string str1, string str2)
     {
         if (str1.Length < str2.Length)
@@ -26,17 +67,17 @@ class Program
 
         foreach (char c in str2)
         {
-                compareString[c - 'a']--;
+            compareString[c - 'a']--;
         }
 
         if (compareString.Any(x => x < 0))
         {
-                return false;
+            return false;
         }
 
-        return true; 
-    } 
-    
+        return true;
+    }
+
     //Categorize New Member
     public static IEnumerable<string> OpenOrSenior(int[][] data)
     {
@@ -45,60 +86,64 @@ class Program
         {
             if (a[0] >= 55 && a[1] > 7)
             {
-                results.Add("Senior"); 
+                results.Add("Senior");
             }
             else
             {
-                results.Add("Open"); 
+                results.Add("Open");
             }
-                
+
         }
+
         return results;
     }
+
     //Banker's Plan
     public static Boolean Fortune(int f0, double p, int c0, int n, double i)
     {
         var currentFortune = f0;
         var currentWithdrawal = c0;
-        
+
         for (int year = 1; year < n; year++)
         {
             currentFortune = currentFortune + (int)(currentFortune * p / 100) - currentWithdrawal;
             currentWithdrawal = currentWithdrawal + (int)((int)currentWithdrawal * i / 100);
             if (currentFortune < 0)
             {
-               return false;
+                return false;
             }
-            
+
         }
 
-        return true; 
+        return true;
     }
-    
+
     //Word Values
     //LINQ Solution:  return a.Select((x, i) => x.Sum(c => c != 32 ? c - 96 : 0) * ++i).ToArray(); 
     public static int[] WordValues(string[] a)
     {
         var results = new int[a.Length];
-        
-        for(int i = 0; i < a.Length; i++)
-        { 
-            var currentSum = 0; 
+
+        for (int i = 0; i < a.Length; i++)
+        {
+            var currentSum = 0;
             var word = a[i];
             foreach (char c in word)
             {
                 if (c != ' ')
                 {
-                    currentSum += c - 'a' + 1; 
+                    currentSum += c - 'a' + 1;
                 }
 
-                
+
             }
+
             results[i] = currentSum * (i + 1);
         }
 
-        return results; 
-    } 
+        return results;
+    }
+
     //Max Length Difference 
     public static int MaxDifLen(string[] a1, string[] a2)
     {
@@ -109,10 +154,10 @@ class Program
 
         var x = a1.Max(s => s.Length) - a2.Min(s => s.Length);
         var y = a2.Max(s => s.Length) - a1.Min(s => s.Length);
-        return Math.Max(x,y);
+        return Math.Max(x, y);
     }
 
-    
+
 //The Feast of Many Beast 
     public static bool Beast(string beast, string dish)
     {
@@ -141,15 +186,15 @@ class Program
     {
         return "five!".Length; //This works because it has a length of 5 and contains no restricted characters
     }
-    
-    
+
+
 //Find the stray number
     public static int differentArray(int[] numbers)
     {
         return numbers.GroupBy(x => x).First(x => x.Count() == 1).Key;
     }
-    
-    
+
+
 //Fix String Case 
     public static string Solve(string s)
     {
@@ -157,8 +202,8 @@ class Program
         int lower = s.Count(char.IsLower);
         return upper > lower ? s.ToUpper() : s.ToLower();
     }
-    
-    
+
+
 //Triple Trouble 
     public static string TripleTrouble(string one, string two, string three)
     {
@@ -172,8 +217,8 @@ class Program
 
         return result;
     }
-    
-    
+
+
 //Count the Smiley Faces 
     public static int CountSmileys(string[] smileys)
     {
@@ -186,8 +231,8 @@ class Program
 
 
     }
-    
-    
+
+
 //Count the Smileys Faces: Saving this approach because this was what I originally tried unsuccessfully
     public static int CountSmiley(string[] smileys) //Dropped the s on the method name to prevent overload
     {
@@ -219,14 +264,14 @@ class Program
         return c;
     }
 
-    
+
 //Sum Mixed Array
     public static int SumMix(object[] x)
     {
         return x.Sum(Convert.ToInt32); //Simply get the Sum of the array and inside the sum method convert all to int
     }
-    
-    
+
+
 //The Supermarket Queue
     //The function should return an int, the total time to checkout
     public static long QueueTime(int[] customers, int registers)
@@ -239,8 +284,8 @@ class Program
 
         return result.Max(); //max number of registers 
     }
-    
-    
+
+
 //Duplicate Count: Return the number of duplicates that occur inside a string
     public static int DuplicateCount(string str)
     {
@@ -250,7 +295,7 @@ class Program
      and .Select(). I tried the first time using the .Contains and was only searching for the single character. I also tried using the .ToLower()
      at the end and it did not work because it was so far down the line of code it wasn't being applied to the "str"*/
 
-    
+
 //Break the camelCase
     public static string BreakCamelCase(string str) =>
 
@@ -258,16 +303,16 @@ class Program
     /*Instead of looking for a specific transition(like lowercase to uppercase) it treats every single
      uppercase letter as a trigger to insert a space
      My original code: Regex.Replace(str, "([a-z])([A-Z])", "$1 $2") looked for a transition from lower to upper*/
-    
-    
+
+
 //Get the mean of an Array
     public static int GetAverage(int[] marks)
     {
         return marks.Sum() / marks.Length; //Average() doesn't work because it is an int not a double. Basic math to get
         //the average. Added all numbers in the array and divided it by the number of numbers in the array. 
     }
-    
-    
+
+
 //Buying a car: Trying to find out how long and how much he will have left over. 
     public static int[] nbMonths(int startPriceOld, int startPriceNew, int savingsPerMonth, double percentLossByMonth)
     {
@@ -297,69 +342,77 @@ class Program
 
 
     static void Main(string[] args)
-    { 
+    {
+        //Welcome Method Test
+        Console.WriteLine($"Greet('english') -> '{Greet("english")}' (Expected: 'Welcome')");
+        Console.WriteLine($"Greet('dutch') -> '{Greet("dutch")}' (Expected: 'Welkom')");
+        Console.WriteLine($"Greet('invalid') -> '{Greet("invalid")}' (Expected: 'Welcome')");
+        Console.WriteLine("--------------------------");
+
         //Beast Method Test
-        Console.WriteLine(
-            $"Beast('great blue heron', 'garlic naan') -> {Beast("great blue heron", "garlic naan")} (Expected: True)");
-        Console.WriteLine(
-            $"Beast('chickadee', 'chocolate cake') -> {Beast("chickadee", "chocolate cake")} (Expected: True)");
-        Console.WriteLine($"Beast('brown bear', 'bear claw') -> {Beast("brown bear", "bear claw")} (Expected: False)");
-        Console.WriteLine("--------------------------");
-
-        //BreakCamelCase Method Test
-        Console.WriteLine($"'camelCase' -> '{BreakCamelCase("camelCase")}'");
-        Console.WriteLine($"'NASA' -> '{BreakCamelCase("NASA")}'");
-        Console.WriteLine($"'SomeABCWord' -> '{BreakCamelCase("SomeABCWord")}'");
-
-        Console.WriteLine("--------------------------");
-
-        //DuplicateCount Method Test 
-        Console.WriteLine($"$aabbccdd {DuplicateCount("aabbccdd")}");
-        Console.WriteLine($"$abcde {DuplicateCount("abcde")}");
-        Console.WriteLine($"$aAbBcdef {DuplicateCount("aAbBcdef")}");
-        Console.WriteLine($"Mississippi {DuplicateCount("Mississippi")}");
-        Console.WriteLine("--------------------------");
-
-        //GetAverage Method Test
-        Console.WriteLine($"Average [1, 2, 3, 4, 5] -> {GetAverage(new int[] { 1, 2, 3, 4, 5 })}");
-        Console.WriteLine($"Average [1, 1, 1, 1, 1, 1, 1, 2] -> {GetAverage(new int[] { 1, 1, 1, 1, 1, 1, 1, 2 })}");
-        Console.WriteLine($"Average [2, 2, 2, 2] -> {GetAverage(new int[] { 2, 2, 2, 2 })}");
-        Console.WriteLine("--------------------------");
-
-        //QueueTime Method Test
-        Console.WriteLine($"QueueTime [5, 3, 4], 1 -> {QueueTime(new int[] { 5, 3, 4 }, 1)} (Expected: 12)");
-        Console.WriteLine($"QueueTime [10, 2, 3, 3], 2 -> {QueueTime(new int[] { 10, 2, 3, 3 }, 2)} (Expected: 10)");
-        Console.WriteLine($"QueueTime [2, 3, 10], 2 -> {QueueTime(new int[] { 2, 3, 10 }, 2)} (Expected: 12)");
-        Console.WriteLine("--------------------------");
-
-        //SumMix Method Test
-        Console.WriteLine($"SumMix [9, 3, \"7\", \"3\"] -> {SumMix(new object[] { 9, 3, "7", "3" })} (Expected: 22)");
-        Console.WriteLine(
-            $"SumMix [\"5\", \"0\", 9, 3, 2, 1, \"9\", 6, 7] -> {SumMix(new object[] { "5", "0", 9, 3, 2, 1, "9", 6, 7 })} (Expected: 42)");
-        Console.WriteLine(
-            $"SumMix [\"3\", 6, 6, 0, \"5\", 8, 5, \"6\", 2, \"0\"] -> {SumMix(new object[] { "3", 6, 6, 0, "5", 8, 5, "6", 2, "0" })} (Expected: 41)");
-        Console.WriteLine("--------------------------");
-
-        //TripleTrouble Method Test
-        Console.WriteLine(
-            $"TripleTrouble(\"aa\", \"bb\", \"cc\") -> \"{TripleTrouble("aa", "bb", "cc")}\" (Expected: \"abcabc\")");
-        Console.WriteLine(
-            $"TripleTrouble(\"Bm\", \"aa\", \"tn\") -> \"{TripleTrouble("Bm", "aa", "tn")}\" (Expected: \"Batman\")");
-        Console.WriteLine(
-            $"TripleTrouble(\"LLh\", \"euo\", \"edr\") -> \"{TripleTrouble("LLh", "euo", "edr")}\" (Expected: \"Leouheder\")");
-
-        //ToRoman Method Test
-        Console.WriteLine($"ToRoman(1990) -> {ToRoman(1990)} (Expected: MCMXC)");
-        Console.WriteLine($"ToRoman(2008) -> {ToRoman(2008)} (Expected: MMVIII)");
-        Console.WriteLine($"ToRoman(1666) -> {ToRoman(1666)} (Expected: MDCLXVI)");
-        Console.WriteLine("--------------------------");
-
-        //FromRoman Method Test
-        Console.WriteLine($"FromRoman(\"MCMXC\") -> {FromRoman("MCMXC")} (Expected: 1990)");
-        Console.WriteLine($"FromRoman(\"MMVIII\") -> {FromRoman("MMVIII")} (Expected: 2008)");
-        Console.WriteLine($"FromRoman(\"MDCLXVI\") -> {FromRoman("MDCLXVI")} (Expected: 1666)");
-        Console.WriteLine("--------------------------");
+         Console.WriteLine(
+             $"Beast('great blue heron', 'garlic naan') -> {Beast("great blue heron", "garlic naan")} (Expected: True)");
+         Console.WriteLine(
+             $"Beast('chickadee', 'chocolate cake') -> {Beast("chickadee", "chocolate cake")} (Expected: True)");
+         Console.WriteLine($"Beast('brown bear', 'bear claw') -> {Beast("brown bear", "bear claw")} (Expected: False)");
+         Console.WriteLine("--------------------------");
         
+         //BreakCamelCase Method Test
+         Console.WriteLine($"'camelCase' -> '{BreakCamelCase("camelCase")}'");
+         Console.WriteLine($"'NASA' -> '{BreakCamelCase("NASA")}'");
+         Console.WriteLine($"'SomeABCWord' -> '{BreakCamelCase("SomeABCWord")}'");
+        
+         Console.WriteLine("--------------------------");
+        
+         //DuplicateCount Method Test 
+         Console.WriteLine($"$aabbccdd {DuplicateCount("aabbccdd")}");
+         Console.WriteLine($"$abcde {DuplicateCount("abcde")}");
+         Console.WriteLine($"$aAbBcdef {DuplicateCount("aAbBcdef")}");
+         Console.WriteLine($"Mississippi {DuplicateCount("Mississippi")}");
+         Console.WriteLine("--------------------------");
+        
+         //GetAverage Method Test
+         Console.WriteLine($"Average [1, 2, 3, 4, 5] -> {GetAverage(new int[] { 1, 2, 3, 4, 5 })}");
+         Console.WriteLine($"Average [1, 1, 1, 1, 1, 1, 1, 2] -> {GetAverage(new int[] { 1, 1, 1, 1, 1, 1, 1, 2 })}");
+         Console.WriteLine($"Average [2, 2, 2, 2] -> {GetAverage(new int[] { 2, 2, 2, 2 })}");
+         Console.WriteLine("--------------------------");
+        
+         //QueueTime Method Test
+         Console.WriteLine($"QueueTime [5, 3, 4], 1 -> {QueueTime(new int[] { 5, 3, 4 }, 1)} (Expected: 12)");
+         Console.WriteLine($"QueueTime [10, 2, 3, 3], 2 -> {QueueTime(new int[] { 10, 2, 3, 3 }, 2)} (Expected: 10)");
+         Console.WriteLine($"QueueTime [2, 3, 10], 2 -> {QueueTime(new int[] { 2, 3, 10 }, 2)} (Expected: 12)");
+         Console.WriteLine("--------------------------");
+        
+         //SumMix Method Test
+         Console.WriteLine($"SumMix [9, 3, \"7\", \"3\"] -> {SumMix(new object[] { 9, 3, "7", "3" })} (Expected: 22)");
+         Console.WriteLine(
+             $"SumMix [\"5\", \"0\", 9, 3, 2, 1, \"9\", 6, 7] -> {SumMix(new object[] { "5", "0", 9, 3, 2, 1, "9", 6, 7 })} (Expected: 42)");
+         Console.WriteLine(
+             $"SumMix [\"3\", 6, 6, 0, \"5\", 8, 5, \"6\", 2, \"0\"] -> {SumMix(new object[] { "3", 6, 6, 0, "5", 8, 5, "6", 2, "0" })} (Expected: 41)");
+         Console.WriteLine("--------------------------");
+        
+         //TripleTrouble Method Test
+         Console.WriteLine(
+             $"TripleTrouble(\"aa\", \"bb\", \"cc\") -> \"{TripleTrouble("aa", "bb", "cc")}\" (Expected: \"abcabc\")");
+         Console.WriteLine(
+             $"TripleTrouble(\"Bm\", \"aa\", \"tn\") -> \"{TripleTrouble("Bm", "aa", "tn")}\" (Expected: \"Batman\")");
+         Console.WriteLine(
+             $"TripleTrouble(\"LLh\", \"euo\", \"edr\") -> \"{TripleTrouble("LLh", "euo", "edr")}\" (Expected: \"Leouheder\")");
+        
+        
+
+        //Password Generator 
+        var random = new Random();
+        const int passwordLength = 10;
+        var buffer = new char[passwordLength];
+        for (var i = 0; i < passwordLength; i++)
+        {
+            buffer[i] = (char)('a' + random.Next(26));
+
+            var password = new string(buffer);
+
+            Console.WriteLine(password);
+        }
     }
 }
 
