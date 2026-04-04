@@ -10,6 +10,122 @@ namespace Codewars2;
 
 class Program
 {
+    //Ranking NBA Teams 
+    public static string NbaCup(string resultSheet, string toFind)
+    {
+        var results = resultSheet.Split(',');
+        var wins = 0; 
+        var losses = 0; 
+        var draws = 0;
+        var points = 0;
+        var conceded = 0; 
+        var scored = 0;
+        bool played = false;
+        
+        if (String.IsNullOrEmpty(toFind)) 
+            return "";
+       
+        foreach(var match in results)
+        {
+            var words = match.Trim().Split(' ');
+            var homeTeam = "";
+            var awayTeam = "";
+            var homeScore = 0; 
+            var awayScore = 0;
+            foreach (var word in words)
+            {
+                if (word.Contains(".") && ((homeTeam != "" && homeScore == 0) || (awayTeam != "" && awayScore == 0)))
+                {
+                    return $"Error(float number):{match}";
+                }
+                
+
+                if (int.TryParse(word, out int score))
+                {
+                    if (homeScore == 0)
+                    {
+                        homeScore = score;
+                    }
+                    else if (homeScore != 0)
+                    {
+                        awayScore = score;
+                    }
+                    
+                }
+                else
+                {
+                    if (homeScore == 0)
+                    {
+                        homeTeam = String.IsNullOrEmpty(homeTeam) ? word : $"{homeTeam} {word}";
+                    }
+                    else if (homeScore != 0)
+                    {
+                        awayTeam = String.IsNullOrEmpty(awayTeam) ? word : $"{awayTeam} {word}";
+                    }
+                    
+                }
+                
+            }
+
+            if (toFind == homeTeam)
+            {
+                if (homeScore > awayScore)
+                {
+                    wins++;
+                    points += 3;
+                    
+                }
+                else if (homeScore < awayScore)
+                {
+                    losses++;
+                    points += 0;
+                    
+                }
+                else
+                {
+                    draws++;
+                    points += 1;
+                }
+                scored += homeScore;
+                conceded += awayScore;
+                played = true;
+            }
+
+            if (toFind == awayTeam)
+            {
+                if (awayScore > homeScore)
+                {
+                    wins++;
+                    points += 3;
+                    
+                }
+                else if (awayScore < homeScore)
+                {
+                    losses++;
+                    points += 0;
+                    
+                }
+                else
+                {
+                    draws++;
+                    points += 1;
+                }
+
+                scored += awayScore;
+                conceded += homeScore;
+                played = true;
+
+            }
+         
+            
+        }
+        if (!played)
+            return $"{toFind}:This team didn't play!";
+        
+        return $"{toFind}:W={wins};D={draws};L={losses};Scored={scored};Conceded={conceded};Points={points}";
+    }
+    
+    //Dictionary of Greetings
     private static Dictionary<string, string> Greeting =
         new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
